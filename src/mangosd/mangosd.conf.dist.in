@@ -483,6 +483,55 @@ LogColors = ""
 #        28 QA Server     - any language
 #        29 CN9           - basic-Latin at create, any at login
 #
+#    RealmCategory
+#        Server realm category based on the client locale in use.
+#        Note: If the configured category does not exist on the client, the realm will not be displayed!
+#
+#        0 - First available category on the client (Default)
+#
+#        enUS
+#        1 - United States
+#        5 - Oceanic
+#
+#        enGB
+#        1 - English
+#        2 - German
+#        3 - French
+#        5 - Spanish
+#
+#        deDE
+#        1 - Englisch
+#        2 - Deutsch
+#        3 - Französisch
+#        5 - Spanisch
+#
+#        frFR
+#        1 - English
+#        2 - Deutsch
+#        3 - Français
+#        5 - Español
+#
+#        esES
+#        1 - Inglés
+#        2 - Alemán
+#        3 - Francés
+#        5 - Español
+#
+#        ruRU
+#        1 - Русский
+#        5 - Океания
+#
+#        koKR
+#        1 - 대한민국
+#
+#        zhCN
+#        1 - 中国
+#        2 - 三区
+#        3 - 七区
+#
+#        zhTW
+#        1 - 臺灣
+#
 #    DBC.Locale
 #        DBC Language Settings
 #        0 = English; 1 = Korean; 2 = French; 3 = German; 4 = Chinese; 5 = Taiwanese; 6 = Spanish;
@@ -794,6 +843,7 @@ LogColors = ""
 
 GameType = 1
 RealmZone = 1
+RealmCategory = 0
 DBC.Locale = 255
 DeclinedNames = 0
 StrictPlayerNames = 0

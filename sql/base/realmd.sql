@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `realmd_db_version`;
 CREATE TABLE `realmd_db_version` (
-  `required_z2820_01_realmd_joindate_datetime` bit(1) DEFAULT NULL
+  `required_z2824_01_realmd_realmlist_category` bit(1) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Last applied sql update to DB';
 
 --
@@ -182,6 +182,7 @@ CREATE TABLE `realmlist` (
   `icon` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `realmflags` tinyint(3) unsigned NOT NULL DEFAULT '2' COMMENT 'Supported masks: 0x1 (invalid, not show in realm list), 0x2 (offline, set by mangosd), 0x4 (show version and build), 0x20 (new players), 0x40 (recommended)',
   `timezone` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `category` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `allowedSecurityLevel` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `population` float unsigned NOT NULL DEFAULT '0',
   `realmbuilds` varchar(64) NOT NULL DEFAULT '',
@@ -196,7 +197,7 @@ CREATE TABLE `realmlist` (
 LOCK TABLES `realmlist` WRITE;
 /*!40000 ALTER TABLE `realmlist` DISABLE KEYS */;
 INSERT INTO `realmlist` VALUES
-(1,'MaNGOS','127.0.0.1',8085,1,0,1,0,0,'');
+(1,'MaNGOS','127.0.0.1',8085,1,0,1,0,0,0,'');
 /*!40000 ALTER TABLE `realmlist` ENABLE KEYS */;
 UNLOCK TABLES;
 

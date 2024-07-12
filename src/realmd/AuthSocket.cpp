@@ -886,7 +886,7 @@ void AuthSocket::LoadRealmlist(ByteBuffer& pkt, uint32 acctid, uint8 securityLev
                 pkt << i.second.address;                   // address
                 pkt << float(i.second.populationLevel);
                 pkt << uint8(AmountOfCharacters);
-                pkt << uint8(i.second.timezone);           // realm category
+                pkt << uint8(i.second.category);            // realm category
                 pkt << uint8(0x00);                         // unk, may be realm number/id?
             }
 
@@ -947,7 +947,7 @@ void AuthSocket::LoadRealmlist(ByteBuffer& pkt, uint32 acctid, uint8 securityLev
                 pkt << i.second.address;                   // address
                 pkt << float(i.second.populationLevel);
                 pkt << uint8(AmountOfCharacters);
-                pkt << uint8(i.second.timezone);           // realm category (Cfg_Categories.dbc)
+                pkt << uint8(i.second.category);            // realm category (Cfg_Categories.dbc)
                 pkt << uint8(0x2C);                         // unk, may be realm number/id?
 
                 if (realmFlags & REALM_FLAG_SPECIFYBUILD)

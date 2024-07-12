@@ -514,6 +514,9 @@ void World::LoadConfigSettings(bool reload)
     if (configNoReload(reload, CONFIG_UINT32_REALM_ZONE, "RealmZone", REALM_ZONE_DEVELOPMENT))
         setConfig(CONFIG_UINT32_REALM_ZONE, "RealmZone", REALM_ZONE_DEVELOPMENT);
 
+    if (configNoReload(reload, CONFIG_UINT32_REALM_CATEGORY, "RealmCategory", 0))
+        setConfig(CONFIG_UINT32_REALM_CATEGORY, "RealmCategory", 0);
+
     setConfig(CONFIG_BOOL_ALLOW_TWO_SIDE_ACCOUNTS,            "AllowTwoSide.Accounts", false);
     setConfig(CONFIG_BOOL_ALLOW_TWO_SIDE_INTERACTION_CHAT,    "AllowTwoSide.Interaction.Chat", false);
     setConfig(CONFIG_BOOL_ALLOW_TWO_SIDE_INTERACTION_CHANNEL, "AllowTwoSide.Interaction.Channel", false);
@@ -872,7 +875,8 @@ void World::SetInitialWorldSettings()
     // not send custom type REALM_FFA_PVP to realm list
     uint32 server_type = IsFFAPvPRealm() ? uint32(REALM_TYPE_PVP) : getConfig(CONFIG_UINT32_GAME_TYPE);
     uint32 realm_zone = getConfig(CONFIG_UINT32_REALM_ZONE);
-    LoginDatabase.PExecute("UPDATE realmlist SET icon = %u, timezone = %u WHERE id = '%u'", server_type, realm_zone, realmID);
+    uint32 realm_category = getConfig(CONFIG_UINT32_REALM_CATEGORY);
+    LoginDatabase.PExecute("UPDATE realmlist SET icon = %u, timezone = %u, category = %u WHERE id = '%u'", server_type, realm_zone, realm_category, realmID);
 
     ///- Remove the bones (they should not exist in DB though) and old corpses after a restart
     CharacterDatabase.PExecute("DELETE FROM corpse WHERE corpse_type = '0' OR time < (" _UNIXTIME_ "-'%u')", 3 * DAY);
